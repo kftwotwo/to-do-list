@@ -11,13 +11,30 @@
   <body>
     <div class="container">
       <div class="row">
-        <form id="inputForm">
-        <div class="input-group">
-          <label>Enter a task to do!</label>
-          <input type="text" id="userInput" class="form-control">
+        <div class="col-md-6">
+          <form id="inputForm">
+            <div class="input-group">
+              <label>Enter a task to do!</label>
+              <input type="text" id="userInput" class="form-control">
+            </div>
+            <div class="input-group">
+              <label>Name</label>
+              <input type="text" id="userInput" class="form-control">
+            </div>
+            <div class="input-group">
+              <label>Time</label>
+              <input type="text" id="userInput" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">Enter</button>
+          </form>
         </div>
-        <button type="submit" class="btn btn-primary">Enter</button>
-      </form>
+        <div class="col-md-6">
+
+          <div class="input-group">
+            <ul id="output"></ul>
+          </div>
+          <button type='button' id="deleteButton">Delete</button>
+        </div>
       </div>
     </div>
   </body>
