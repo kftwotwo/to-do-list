@@ -1,43 +1,32 @@
-
-
-
-
-
-
-function Item(item, name, time) {
-  this.item = item;
-  this.name = name;
+//business logic
+function Chore(task, userName, time) {
+  this.task = task;
+  this.userName = userName;
   this.time = time;
-  this.addListItem = function() {
-    $("#output").append("<li> <label class='checkbox'><input type='checkbox' name='task'>" + item +"</li></label>");
-  }
 }
 
-function click()
-
-
-
-
-
-
-
-
+// user interface logic
 $(document).ready(function() {
-  $('#inputForm').submit(function(event) {
+  $("form#inputForm").submit(function(event) {
     event.preventDefault();
-    var validatedInput = $('#userInput').val().replace(/\s/g, '');
-    if (validatedInput != "") {
-      var item = new Item($('#userInput').val());
-      item.addListItem();
-    } else {
-      alert("Please enter a value.");
-    }
-    $('#inputForm')[0].reset();
-  });
 
-  $('#deleteButton').click(function() {
-    $("input:checkbox[name=task]:checked").each(function(){
-          $(this).closest("li").remove();
+    var inputtedTask = $("input#userTask").val();
+    var inputtedUserName = $("input#userName").val();
+    var inputtedTime = $("input#userTime").val();
+
+    var newChore = new Chore(inputtedTask, inputtedUserName, inputtedTime);
+
+    $("ul#output").append("<li><span class='userChore'>" + newChore.task + "</span></li>");
+
+    $(".userChore").last().click(function() {
+      $("#show-chore").show();
+      $(".choreSpan").text(newChore.task);
+      $(".nameSpan").text(newChore.userName);
+      $(".timeSpan").text(newChore.time);
     });
-  })
+
+    $("input#task").val("");
+    $("input#userName").val("");
+    $("input#time").val("");
+  });
 });
